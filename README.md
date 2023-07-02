@@ -1,9 +1,21 @@
+# Php [Cayenne](https://docs.mydevices.com/docs/lorawan/cayenne-lpp) Encoder & Decoder
+
+<a href="https://github.com/jalallinux/cayenne-lpp">  
+    <p align="center"><img src="cover.png" width="100%"></p>    
+</a>
+
+
+
+[![Latest Stable Version](https://poser.pugx.org/jalallinux/cayenne-lpp/v)](https://packagist.org/packages/jalallinux/cayenne-lpp)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jalallinux/cayenne-lpp.svg?style=flat-square)](https://packagist.org/packages/jalallinux/cayenne-lpp)
 [![Tests](https://github.com/jalallinux/cayenne-lpp/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/jalallinux/cayenne-lpp/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/jalallinux/cayenne-lpp.svg?style=flat-square)](https://packagist.org/packages/jalallinux/cayenne-lpp)
 <!--delete-->
 ---
-PHP Cayenne LPP encoder and decoder
+This library can encode and decode data stream for LoraWan and SigFox devices which use Cayenne LPP encoding.
+
+
+
 
 ## Installation
 
@@ -13,12 +25,23 @@ You can install the package via composer:
 composer require jalallinux/cayenne-lpp
 ```
 
+
+
+
 ## Usage
 
+### Encoder
 ```php
-$skeleton = new JalalLinuX\CayenneLpp();
-echo $skeleton->echoPhrase('Hello, JalalLinuX!');
+
 ```
+
+### Decoder
+```php
+
+```
+
+
+
 
 ## Testing
 
@@ -30,14 +53,16 @@ composer test
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
 
 ## Credits
 
 - [JalalLinuX](https://github.com/jalallinux)
 - [All Contributors](../../contributors)
+
+
+
 
 ## License
 
