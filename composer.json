@@ -1,13 +1,13 @@
 {
-    "name": "jalallinux/cayenne-lpp",
+    "name": "jalallinux/php-cayenne-lpp",
     "description": "PHP Cayenne LPP encoder and decoder",
     "keywords": [
         "JalalLinuX",
         "HiDevs",
         "cayenne",
-        "cayenne-lpp"
+        "php-cayenne-lpp"
     ],
-    "homepage": "https://github.com/jalallinux/cayenne-lpp",
+    "homepage": "https://github.com/jalallinux/php-cayenne-lpp",
     "license": "MIT",
     "authors": [
         {
