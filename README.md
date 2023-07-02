@@ -1,4 +1,4 @@
-# Php [Cayenne](https://docs.mydevices.com/docs/lorawan/php-cayenne-lpp) Encoder & Decoder
+# Php [Cayenne](https://docs.mydevices.com/docs/lorawan/cayenne-lpp) Encoder & Decoder
 
 <a href="https://github.com/jalallinux/php-cayenne-lpp">  
     <p align="center"><img src="cover.png" width="100%"></p>    
