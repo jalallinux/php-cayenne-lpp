@@ -15,30 +15,31 @@ trait BarometricPressure
 
         $value = round($value * 10);
 
-        $this->addData($channel, LPP_BAROMETRIC_PRESSURE, array(
-        ($value >> 8) & 0xFF,
-        $value & 0xFF
-        ));
+        $this->addData($channel, LPP_BAROMETRIC_PRESSURE, [
+            ($value >> 8) & 0xFF,
+            $value & 0xFF,
+        ]);
     }
 
-    public function decodeBarometricPressure(string $bin) : array
+    public function decodeBarometricPressure(string $bin): array
     {
         if ($this->isLittleEndian()) {
             $bin = $this->swap16($bin);
         }
 
         $p = unpack('s', $bin)[1];
-        return array(
-        'value' => 0.1 * $p
-        );
+
+        return [
+            'value' => 0.1 * $p,
+        ];
     }
 
-    public function getBarometricPressureLPPType() : int
+    public function getBarometricPressureLPPType(): int
     {
         return LPP_BAROMETRIC_PRESSURE;
     }
 
-    public function getBarometricPressureLPPSize() : int
+    public function getBarometricPressureLPPSize(): int
     {
         return LPP_BAROMETRIC_PRESSURE_SIZE;
     }

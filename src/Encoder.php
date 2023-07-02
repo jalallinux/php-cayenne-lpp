@@ -5,17 +5,17 @@ namespace JalalLinuX\CayenneLpp;
 class Encoder
 {
     use Types\DigitalInput,
-      Types\DigitalOutput,
-      Types\AnalogInput,
-      Types\AnalogOutput,
-      Types\Luminosity,
-      Types\Presence,
-      Types\Temperature,
-      Types\RelativeHumidity,
-      Types\Accelerometer,
-      Types\BarometricPressure,
-      Types\Gyrometer,
-      Types\GPS;
+        Types\DigitalOutput,
+        Types\AnalogInput,
+        Types\AnalogOutput,
+        Types\Luminosity,
+        Types\Presence,
+        Types\Temperature,
+        Types\RelativeHumidity,
+        Types\Accelerometer,
+        Types\BarometricPressure,
+        Types\Gyrometer,
+        Types\GPS;
 
     private $buffer;
 
@@ -26,9 +26,10 @@ class Encoder
 
     /**
      * Internal function to add data into the encoder
-     * @param int   $channel Channel number of the data
-     * @param int   $type    Type of the data
-     * @param array $payload Array of bytes to add into the encoder
+     *
+     * @param  int  $channel Channel number of the data
+     * @param  int  $type    Type of the data
+     * @param  array  $payload Array of bytes to add into the encoder
      */
     protected function addData(int $channel, int $type, array $payload)
     {
@@ -39,18 +40,20 @@ class Encoder
 
     /**
      * Return the current size of the LPP payload
+     *
      * @return int Size in bytes
      */
-    public function getSize() : int
+    public function getSize(): int
     {
         return count($this->buffer);
     }
 
     /**
      * Return the current LPP payload
+     *
      * @return int payload in binary
      */
-    public function getBuffer() : string
+    public function getBuffer(): string
     {
         return pack('C*', ...$this->buffer);
     }
@@ -60,6 +63,6 @@ class Encoder
      */
     public function reset()
     {
-        $this->buffer = array();
+        $this->buffer = [];
     }
 }

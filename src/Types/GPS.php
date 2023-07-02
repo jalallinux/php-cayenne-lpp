@@ -23,20 +23,20 @@ trait GPS
         $longitude = round($longitude * 10000);
         $altitude = round($altitude * 100);
 
-        $this->addData($channel, LPP_GPS, array(
-        ($latitude >> 16) & 0xFF,
-        ($latitude >> 8) & 0xFF,
-        $latitude & 0xFF,
-        ($longitude >> 16) & 0xFF,
-        ($longitude >> 8) & 0xFF,
-        $longitude & 0xFF,
-        ($altitude >> 16) & 0xFF,
-        ($altitude >> 8) & 0xFF,
-        $altitude & 0xFF
-        ));
+        $this->addData($channel, LPP_GPS, [
+            ($latitude >> 16) & 0xFF,
+            ($latitude >> 8) & 0xFF,
+            $latitude & 0xFF,
+            ($longitude >> 16) & 0xFF,
+            ($longitude >> 8) & 0xFF,
+            $longitude & 0xFF,
+            ($altitude >> 16) & 0xFF,
+            ($altitude >> 8) & 0xFF,
+            $altitude & 0xFF,
+        ]);
     }
 
-    public function decodeGPS(string $bin) : array
+    public function decodeGPS(string $bin): array
     {
         $bins = str_split($bin, 3);
 
@@ -45,9 +45,9 @@ trait GPS
                 $sign = unpack('C', $item[0])[1];
 
                 if ($sign > 127) {
-                    $item = $this->swap24($item) . "\xFF";
+                    $item = $this->swap24($item)."\xFF";
                 } else {
-                    $item = $this->swap24($item) . "\x00";
+                    $item = $this->swap24($item)."\x00";
                 }
             });
         } else {
@@ -55,9 +55,9 @@ trait GPS
                 $sign = unpack('C', $item[2])[1];
 
                 if ($sign > 127) {
-                    $item = "\xFF" . $item;
+                    $item = "\xFF".$item;
                 } else {
-                    $item = "\x00" . $item;
+                    $item = "\x00".$item;
                 }
             });
         }
@@ -66,19 +66,19 @@ trait GPS
             $item = unpack('l', $item)[1];
         });
 
-        return array(
-        'latitude' => 0.0001 * $bins[0],
-        'longitude' => 0.0001 * $bins[1],
-        'altitude' => 0.01 * $bins[2]
-        );
+        return [
+            'latitude' => 0.0001 * $bins[0],
+            'longitude' => 0.0001 * $bins[1],
+            'altitude' => 0.01 * $bins[2],
+        ];
     }
 
-    public function getGPSLPPType() : int
+    public function getGPSLPPType(): int
     {
         return LPP_GPS;
     }
 
-    public function getGPSLPPSize() : int
+    public function getGPSLPPSize(): int
     {
         return LPP_GPS_SIZE;
     }

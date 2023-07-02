@@ -9,24 +9,24 @@ trait Presence
 {
     public function addPresence(int $channel, bool $value)
     {
-        $this->addData($channel, LPP_PRESENCE, array(
-        (int) $value
-        ));
+        $this->addData($channel, LPP_PRESENCE, [
+            (int) $value,
+        ]);
     }
 
-    public function decodePresence(string $bin) : array
+    public function decodePresence(string $bin): array
     {
-        return array(
-        'value' => bin2hex($bin) === '01'
-        );
+        return [
+            'value' => bin2hex($bin) === '01',
+        ];
     }
 
-    public function getPresenceLPPType() : int
+    public function getPresenceLPPType(): int
     {
         return LPP_PRESENCE;
     }
 
-    public function getPresenceLPPSize() : int
+    public function getPresenceLPPSize(): int
     {
         return LPP_PRESENCE_SIZE;
     }

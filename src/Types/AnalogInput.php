@@ -15,30 +15,31 @@ trait AnalogInput
 
         $value = round($value * 100);
 
-        $this->addData($channel, LPP_ANALOG_INPUT, array(
-        ($value >> 8) & 0xFF,
-        $value & 0xFF
-        ));
+        $this->addData($channel, LPP_ANALOG_INPUT, [
+            ($value >> 8) & 0xFF,
+            $value & 0xFF,
+        ]);
     }
 
-    public function decodeAnalogInput(string $bin) : array
+    public function decodeAnalogInput(string $bin): array
     {
         if ($this->isLittleEndian()) {
             $bin = $this->swap16($bin);
         }
 
         $v = unpack('s', $bin)[1];
-        return array(
-        'value' => 0.01 * $v
-        );
+
+        return [
+            'value' => 0.01 * $v,
+        ];
     }
 
-    public function getAnalogInputLPPType() : int
+    public function getAnalogInputLPPType(): int
     {
         return LPP_ANALOG_INPUT;
     }
 
-    public function getAnalogInputLPPSize() : int
+    public function getAnalogInputLPPSize(): int
     {
         return LPP_ANALOG_INPUT_SIZE;
     }

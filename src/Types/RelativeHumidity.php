@@ -15,25 +15,26 @@ trait RelativeHumidity
 
         $value = round($value * 2);
 
-        $this->addData($channel, LPP_RELATIVE_HUMIDITY, array(
-        (int) $value
-        ));
+        $this->addData($channel, LPP_RELATIVE_HUMIDITY, [
+            (int) $value,
+        ]);
     }
 
-    public function decodeRelativeHumidity(string $bin) : array
+    public function decodeRelativeHumidity(string $bin): array
     {
         $hr = unpack('C', $bin)[1];
-        return array(
-        'value' => 0.5 * $hr
-        );
+
+        return [
+            'value' => 0.5 * $hr,
+        ];
     }
 
-    public function getRelativeHumidityLPPType() : int
+    public function getRelativeHumidityLPPType(): int
     {
         return LPP_RELATIVE_HUMIDITY;
     }
 
-    public function getRelativeHumidityLPPSize() : int
+    public function getRelativeHumidityLPPSize(): int
     {
         return LPP_RELATIVE_HUMIDITY_SIZE;
     }

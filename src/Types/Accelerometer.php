@@ -23,17 +23,17 @@ trait Accelerometer
         $y = round($y * 1000);
         $z = round($z * 1000);
 
-        $this->addData($channel, LPP_ACCELEROMETER, array(
-        ($x >> 8) & 0xFF,
-        $x & 0xFF,
-        ($y >> 8) & 0xFF,
-        $y & 0xFF,
-        ($z >> 8) & 0xFF,
-        $z & 0xFF
-        ));
+        $this->addData($channel, LPP_ACCELEROMETER, [
+            ($x >> 8) & 0xFF,
+            $x & 0xFF,
+            ($y >> 8) & 0xFF,
+            $y & 0xFF,
+            ($z >> 8) & 0xFF,
+            $z & 0xFF,
+        ]);
     }
 
-    public function decodeAccelerometer(string $bin) : array
+    public function decodeAccelerometer(string $bin): array
     {
         $bins = str_split($bin, 2);
         if ($this->isLittleEndian()) {
@@ -45,19 +45,20 @@ trait Accelerometer
         array_walk($bins, function (&$item) {
             $item = 0.001 * unpack('s', $item)[1];
         });
-        return array(
-        'x' => $bins[0],
-        'y' => $bins[1],
-        'z' => $bins[2]
-        );
+
+        return [
+            'x' => $bins[0],
+            'y' => $bins[1],
+            'z' => $bins[2],
+        ];
     }
 
-    public function getAccelerometerLPPType() : int
+    public function getAccelerometerLPPType(): int
     {
         return LPP_ACCELEROMETER;
     }
 
-    public function getAccelerometerLPPSize() : int
+    public function getAccelerometerLPPSize(): int
     {
         return LPP_ACCELEROMETER_SIZE;
     }

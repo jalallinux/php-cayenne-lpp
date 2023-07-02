@@ -9,24 +9,24 @@ trait DigitalOutput
 {
     public function addDigitalOutput(int $channel, bool $value)
     {
-        $this->addData($channel, LPP_DIGITAL_OUTPUT, array(
-        (int) $value
-        ));
+        $this->addData($channel, LPP_DIGITAL_OUTPUT, [
+            (int) $value,
+        ]);
     }
 
-    public function decodeDigitalOutput(string $bin) : array
+    public function decodeDigitalOutput(string $bin): array
     {
-        return array(
-        'value' => bin2hex($bin) === '01'
-        );
+        return [
+            'value' => bin2hex($bin) === '01',
+        ];
     }
 
-    public function getDigitalOutputLPPType() : int
+    public function getDigitalOutputLPPType(): int
     {
         return LPP_DIGITAL_OUTPUT;
     }
 
-    public function getDigitalOutputLPPSize() : int
+    public function getDigitalOutputLPPSize(): int
     {
         return LPP_DIGITAL_OUTPUT_SIZE;
     }

@@ -23,17 +23,17 @@ trait Gyrometer
         $y = round($y * 100);
         $z = round($z * 100);
 
-        $this->addData($channel, LPP_GYROMETER, array(
-        ($x >> 8) & 0xFF,
-        $x & 0xFF,
-        ($y >> 8) & 0xFF,
-        $y & 0xFF,
-        ($z >> 8) & 0xFF,
-        $z & 0xFF
-        ));
+        $this->addData($channel, LPP_GYROMETER, [
+            ($x >> 8) & 0xFF,
+            $x & 0xFF,
+            ($y >> 8) & 0xFF,
+            $y & 0xFF,
+            ($z >> 8) & 0xFF,
+            $z & 0xFF,
+        ]);
     }
 
-    public function decodeGyrometer(string $bin) : array
+    public function decodeGyrometer(string $bin): array
     {
         $bins = str_split($bin, 2);
         if ($this->isLittleEndian()) {
@@ -45,19 +45,20 @@ trait Gyrometer
         array_walk($bins, function (&$item) {
             $item = 0.01 * unpack('s', $item)[1];
         });
-        return array(
-        'x' => $bins[0],
-        'y' => $bins[1],
-        'z' => $bins[2]
-        );
+
+        return [
+            'x' => $bins[0],
+            'y' => $bins[1],
+            'z' => $bins[2],
+        ];
     }
 
-    public function getGyrometerLPPType() : int
+    public function getGyrometerLPPType(): int
     {
         return LPP_GYROMETER;
     }
 
-    public function getGyrometerLPPSize() : int
+    public function getGyrometerLPPSize(): int
     {
         return LPP_GYROMETER_SIZE;
     }

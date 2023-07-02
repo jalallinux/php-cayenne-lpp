@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JalalLinuX\CayenneLpp\Tests;
 
-use JalalLinuX\CayenneLpp\Encoder;
 use JalalLinuX\CayenneLpp\Decoder;
+use JalalLinuX\CayenneLpp\Encoder;
 use PHPUnit\Framework\TestCase;
 
 class ExceptionTest extends TestCase

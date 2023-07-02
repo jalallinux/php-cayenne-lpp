@@ -13,30 +13,31 @@ trait Luminosity
             throw new Exception('Value is too big to be encoded in Luminosity (max = 65535)');
         }
 
-        $this->addData($channel, LPP_LUMINOSITY, array(
-        ($value >> 8) & 0xFF,
-        $value & 0xFF
-        ));
+        $this->addData($channel, LPP_LUMINOSITY, [
+            ($value >> 8) & 0xFF,
+            $value & 0xFF,
+        ]);
     }
 
-    public function decodeLuminosity(string $bin) : array
+    public function decodeLuminosity(string $bin): array
     {
         if ($this->isLittleEndian()) {
             $bin = $this->swap16($bin);
         }
 
         $l = unpack('s', $bin)[1];
-        return array(
-        'value' => $l
-        );
+
+        return [
+            'value' => $l,
+        ];
     }
 
-    public function getLuminosityLPPType() : int
+    public function getLuminosityLPPType(): int
     {
         return LPP_LUMINOSITY;
     }
 
-    public function getLuminosityLPPSize() : int
+    public function getLuminosityLPPSize(): int
     {
         return LPP_LUMINOSITY_SIZE;
     }

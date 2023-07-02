@@ -15,30 +15,31 @@ trait AnalogOutput
 
         $value = round($value * 100);
 
-        $this->addData($channel, LPP_ANALOG_OUTPUT, array(
-        ($value >> 8) & 0xFF,
-        $value & 0xFF
-        ));
+        $this->addData($channel, LPP_ANALOG_OUTPUT, [
+            ($value >> 8) & 0xFF,
+            $value & 0xFF,
+        ]);
     }
 
-    public function decodeAnalogOutput(string $bin) : array
+    public function decodeAnalogOutput(string $bin): array
     {
         if ($this->isLittleEndian()) {
             $bin = $this->swap16($bin);
         }
 
         $v = unpack('s', $bin)[1];
-        return array(
-        'value' => 0.01 * $v
-        );
+
+        return [
+            'value' => 0.01 * $v,
+        ];
     }
 
-    public function getAnalogOutputLPPType() : int
+    public function getAnalogOutputLPPType(): int
     {
         return LPP_ANALOG_OUTPUT;
     }
 
-    public function getAnalogOutputLPPSize() : int
+    public function getAnalogOutputLPPSize(): int
     {
         return LPP_ANALOG_OUTPUT_SIZE;
     }

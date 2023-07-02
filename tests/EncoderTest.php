@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace JalalLinuX\CayenneLpp\Tests;
 
@@ -18,7 +20,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getDigitalInputLPPSize() * 4);
-        $this->assertEquals($buffer, hex2bin('000001' . '010000' . '020000' . '030001'));
+        $this->assertEquals($buffer, hex2bin('000001'.'010000'.'020000'.'030001'));
     }
 
     public function testDigitalOutput()
@@ -32,7 +34,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getDigitalOutputLPPSize() * 4);
-        $this->assertEquals($buffer, hex2bin('000101' . '010100' . '020100' . '030101'));
+        $this->assertEquals($buffer, hex2bin('000101'.'010100'.'020100'.'030101'));
     }
 
     public function testAnalogInput()
@@ -46,7 +48,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getAnalogInputLPPSize() * 4);
-        $this->assertEquals($buffer, hex2bin('000208B1' . '0102007D' . '0202FFDD' . '0302F87F'));
+        $this->assertEquals($buffer, hex2bin('000208B1'.'0102007D'.'0202FFDD'.'0302F87F'));
     }
 
     public function testAnalogOutput()
@@ -60,7 +62,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getAnalogOutputLPPSize() * 4);
-        $this->assertEquals($buffer, hex2bin('000308B1' . '0103007D' . '0203FFDD' . '0303F87F'));
+        $this->assertEquals($buffer, hex2bin('000308B1'.'0103007D'.'0203FFDD'.'0303F87F'));
     }
 
     public function testLuminosity()
@@ -72,7 +74,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getLuminosityLPPSize() * 2);
-        $this->assertEquals($buffer, hex2bin('006500FA' . '016502BC'));
+        $this->assertEquals($buffer, hex2bin('006500FA'.'016502BC'));
     }
 
     public function testPresence()
@@ -86,7 +88,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getPresenceLPPSize() * 4);
-        $this->assertEquals($buffer, hex2bin('006601' . '016600' . '026600' . '036601'));
+        $this->assertEquals($buffer, hex2bin('006601'.'016600'.'026600'.'036601'));
     }
 
     public function testTemperature()
@@ -99,7 +101,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getTemperatureLPPSize() * 3);
-        $this->assertEquals($buffer, hex2bin('006700c8' . '0167fed4' . '026700c8'));
+        $this->assertEquals($buffer, hex2bin('006700c8'.'0167fed4'.'026700c8'));
     }
 
     public function testRelativeHumidity()
@@ -122,7 +124,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getAccelerometerLPPSize() * 2);
-        $this->assertEquals($buffer, hex2bin('0071ff88fe982654' . '01712654ff88fe98'));
+        $this->assertEquals($buffer, hex2bin('0071ff88fe982654'.'01712654ff88fe98'));
     }
 
     public function testBarometricPressure()
@@ -134,7 +136,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getBarometricPressureLPPSize() * 2);
-        $this->assertEquals($buffer, hex2bin('00732635' . '01732907'));
+        $this->assertEquals($buffer, hex2bin('00732635'.'01732907'));
     }
 
     public function testGyrometer()
@@ -146,7 +148,7 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getGyrometerLPPSize() * 2);
-        $this->assertEquals($buffer, hex2bin('00860070013AFFFF' . '0186FFFF0070013A'));
+        $this->assertEquals($buffer, hex2bin('00860070013AFFFF'.'0186FFFF0070013A'));
     }
 
     public function testGPS()
@@ -158,6 +160,6 @@ class EncoderTest extends TestCase
         $size = $lpp->getSize();
 
         $this->assertEquals($size, $lpp->getGPSLPPSize() * 2);
-        $this->assertEquals($buffer, hex2bin('0088000000000000000000' . '018806765ff2960a0003e8'));
+        $this->assertEquals($buffer, hex2bin('0088000000000000000000'.'018806765ff2960a0003e8'));
     }
 }
