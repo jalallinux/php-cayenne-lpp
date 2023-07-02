@@ -9,11 +9,11 @@ class Raw implements \Countable
     private EnumCayenneName $typeName;
     private array $data;
 
-    public function __construct(int $channel, int $type, string $typeName, array $data)
+    public function __construct(int $channel, int $type, EnumCayenneName $typeName, array $data)
     {
         $this->channel = $channel;
         $this->type = $type;
-        $this->typeName = EnumCayenneName::from($typeName);
+        $this->typeName = $typeName;
         $this->data = $data;
     }
 

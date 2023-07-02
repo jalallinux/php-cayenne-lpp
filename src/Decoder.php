@@ -101,7 +101,7 @@ class Decoder implements Iterator, Countable
             }
 
             // Decode and store
-            $out[] = new Raw($channel, $type, (string) $this->type2name[$type], $this->decodeType($type, $chunck));
+            $out[] = new Raw($channel, $type, $this->type2name[$type], $this->decodeType($type, $chunck));
 
             // Reduce payload
             $payload = substr($payload, $size + LPP_HEADER_SIZE);
