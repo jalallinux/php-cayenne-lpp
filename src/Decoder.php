@@ -23,6 +23,9 @@ class Decoder implements Iterator, Countable
         Types\Gyrometer,
         Types\GPS;
 
+    /**
+     * @var Raw[]
+     */
     public array $data;
 
     private int $index;
@@ -49,24 +52,29 @@ class Decoder implements Iterator, Countable
         ];
 
         $this->type2name = [
-            Types\LPP_ACCELEROMETER => 'accelerometer',
-            Types\LPP_ANALOG_INPUT => 'analogInput',
-            Types\LPP_ANALOG_OUTPUT => 'analogOutput',
-            Types\LPP_BAROMETRIC_PRESSURE => 'pressure',
-            Types\LPP_DIGITAL_INPUT => 'digitalInput',
-            Types\LPP_DIGITAL_OUTPUT => 'digitalOutput',
-            Types\LPP_GPS => 'gps',
-            Types\LPP_GYROMETER => 'gyrometer',
-            Types\LPP_LUMINOSITY => 'luminosity',
-            Types\LPP_PRESENCE => 'presence',
-            Types\LPP_RELATIVE_HUMIDITY => 'humidity',
-            Types\LPP_TEMPERATURE => 'temperature',
+            Types\LPP_ACCELEROMETER => EnumCayenneName::ACCELEROMETER(),
+            Types\LPP_ANALOG_INPUT => EnumCayenneName::ANALOG_INPUT(),
+            Types\LPP_ANALOG_OUTPUT => EnumCayenneName::ANALOG_OUTPUT(),
+            Types\LPP_BAROMETRIC_PRESSURE => EnumCayenneName::PRESSURE(),
+            Types\LPP_DIGITAL_INPUT => EnumCayenneName::DIGITAL_INPUT(),
+            Types\LPP_DIGITAL_OUTPUT => EnumCayenneName::DIGITAL_OUTPUT(),
+            Types\LPP_GPS => EnumCayenneName::GPS(),
+            Types\LPP_GYROMETER => EnumCayenneName::GYRO_METER(),
+            Types\LPP_LUMINOSITY => EnumCayenneName::LUMINOSITY(),
+            Types\LPP_PRESENCE => EnumCayenneName::PRESENCE(),
+            Types\LPP_RELATIVE_HUMIDITY => EnumCayenneName::HUMIDITY(),
+            Types\LPP_TEMPERATURE => EnumCayenneName::TEMPERATURE(),
         ];
 
         $this->data = $this->decode($payload);
         $this->index = 0;
     }
 
+    /**
+     * @param string $payload
+     * @return Raw[]
+     * @throws Exception
+     */
     private function decode(string $payload): array
     {
         $out = [];
@@ -93,12 +101,7 @@ class Decoder implements Iterator, Countable
             }
 
             // Decode and store
-            $out[] = [
-                'channel' => $channel,
-                'type' => $type,
-                'typeName' => $this->type2name[$type],
-                'data' => $this->decodeType($type, $chunck),
-            ];
+            $out[] = new Raw($channel, $type, $this->type2name[$type], $this->decodeType($type, $chunck));
 
             // Reduce payload
             $payload = substr($payload, $size + LPP_HEADER_SIZE);

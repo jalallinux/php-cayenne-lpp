@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace JalalLinuX\CayenneLpp\Tests;
 
 use JalalLinuX\CayenneLpp\Decoder;
+use JalalLinuX\CayenneLpp\EnumCayenneName;
 use PHPUnit\Framework\TestCase;
 
 class DecoderTest extends TestCase
@@ -16,9 +17,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 4);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('digitalInput', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('digitalInput', $data->typeName());
         }
     }
 
@@ -29,9 +31,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 4);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('digitalOutput', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('digitalOutput', $data->typeName());
         }
     }
 
@@ -42,9 +45,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 4);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            //            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('analogInput', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertStringContainsString((string) $values[$channel], (string) $data->data()['value']);
+            $this->assertEquals('analogInput', $data->typeName());
         }
     }
 
@@ -55,9 +59,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 4);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            //            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('analogOutput', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals((string) $values[$channel], (string) $data->data()['value']);
+            $this->assertEquals('analogOutput', $data->typeName());
         }
     }
 
@@ -68,9 +73,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 2);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('luminosity', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('luminosity', $data->typeName());
         }
     }
 
@@ -81,9 +87,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 4);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('presence', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('presence', $data->typeName());
         }
     }
 
@@ -94,9 +101,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 3);
         foreach ($decoded as $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('temperature', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('temperature', $data->typeName());
         }
     }
 
@@ -107,9 +115,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 1);
         foreach ($decoded as $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('humidity', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('humidity', $data->typeName());
         }
     }
 
@@ -123,9 +132,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 2);
         foreach ($decoded as $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']);
-            $this->assertEquals('accelerometer', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data());
+            $this->assertEquals('accelerometer', $data->typeName());
         }
     }
 
@@ -136,9 +146,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 2);
         foreach ($decoded as $index => $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']['value']);
-            $this->assertEquals('pressure', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data()['value']);
+            $this->assertEquals('pressure', $data->typeName());
         }
     }
 
@@ -152,9 +163,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 2);
         foreach ($decoded as $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']);
-            $this->assertEquals('gyrometer', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data());
+            $this->assertEquals('gyrometer', $data->typeName());
         }
     }
 
@@ -168,9 +180,10 @@ class DecoderTest extends TestCase
 
         $this->assertEquals(count($decoded), 2);
         foreach ($decoded as $data) {
-            $channel = $data['channel'];
-            $this->assertEquals($values[$channel], $data['data']);
-            $this->assertEquals('gps', $data['typeName']);
+            $channel = $data->channel();
+            $this->assertInstanceOf(EnumCayenneName::class, $data->typeName());
+            $this->assertEquals($values[$channel], $data->data());
+            $this->assertEquals('gps', $data->typeName());
         }
     }
 }
