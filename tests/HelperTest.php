@@ -10,7 +10,7 @@ class HelperTest extends TestCase
 {
     public function testDecoder()
     {
-        $decoder = cayenne()->decoder(hex2bin('000001' . '010000' . '020000' . '030001'));
+        $decoder = cayenne()->decoder(hex2bin('000001'.'010000'.'020000'.'030001'));
         $this->assertInstanceOf(Decoder::class, $decoder);
     }
 

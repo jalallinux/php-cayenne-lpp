@@ -1,6 +1,5 @@
 <?php
 
-
 use JalalLinuX\CayenneLpp\Cayenne;
 
 if (! function_exists('cayenne')) {

@@ -8,6 +8,7 @@ class Cayenne
     {
         return new Encoder();
     }
+
     public function decoder(string $payload): Decoder
     {
         return new Decoder($payload);

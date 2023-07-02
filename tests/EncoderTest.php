@@ -1,6 +1,5 @@
 <?php
 
-
 namespace JalalLinuX\CayenneLpp\Tests;
 
 use JalalLinuX\CayenneLpp\Encoder;

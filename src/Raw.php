@@ -5,8 +5,11 @@ namespace JalalLinuX\CayenneLpp;
 class Raw implements \Countable
 {
     private int $channel;
+
     private int $type;
+
     private EnumCayenneName $typeName;
+
     private array $data;
 
     public function __construct(int $channel, int $type, EnumCayenneName $typeName, array $data)

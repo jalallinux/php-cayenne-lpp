@@ -71,8 +71,8 @@ class Decoder implements Iterator, Countable
     }
 
     /**
-     * @param string $payload
      * @return Raw[]
+     *
      * @throws Exception
      */
     private function decode(string $payload): array
