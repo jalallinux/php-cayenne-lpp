@@ -1,23 +1,23 @@
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/jalallinux/cayenne-lpp.svg?style=flat-square)](https://packagist.org/packages/jalallinux/cayenne-lpp)
+[![Tests](https://github.com/jalallinux/cayenne-lpp/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/jalallinux/cayenne-lpp/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/jalallinux/cayenne-lpp.svg?style=flat-square)](https://packagist.org/packages/jalallinux/cayenne-lpp)
 <!--delete-->
 ---
-:package_description
+PHP Cayenne LPP encoder and decoder
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require jalallinux/cayenne-lpp
 ```
 
 ## Usage
 
 ```php
-$skeleton = new VendorName\Skeleton();
-echo $skeleton->echoPhrase('Hello, VendorName!');
+$skeleton = new JalalLinuX\CayenneLpp();
+echo $skeleton->echoPhrase('Hello, JalalLinuX!');
 ```
 
 ## Testing
@@ -36,7 +36,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [JalalLinuX](https://github.com/jalallinux)
 - [All Contributors](../../contributors)
 
 ## License

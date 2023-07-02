@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "jalallinux/cayenne-lpp",
+    "description": "PHP Cayenne LPP encoder and decoder",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "JalalLinuX",
+        "cayenne-lpp"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/jalallinux/cayenne-lpp",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "JalalLinuX",
+            "email": "smjjalalzadeh93@gmail.com",
             "role": "Developer"
         }
     ],
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "JalalLinuX\\CayenneLpp\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "JalalLinuX\\CayenneLpp\\Tests\\": "tests"
         }
     },
     "scripts": {
