@@ -23,13 +23,13 @@ class Decoder implements Iterator, Countable
         Types\Gyrometer,
         Types\GPS;
 
-    public $data;
+    public array $data;
 
-    private $index;
+    private int $index;
 
-    private $type2size;
+    private array $type2size;
 
-    private $type2name;
+    private array $type2name;
 
     public function __construct(string $payload)
     {

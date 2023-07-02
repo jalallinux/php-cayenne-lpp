@@ -51,7 +51,7 @@ class Encoder
     /**
      * Return the current LPP payload
      *
-     * @return int payload in binary
+     * @return string payload in binary
      */
     public function getBuffer(): string
     {

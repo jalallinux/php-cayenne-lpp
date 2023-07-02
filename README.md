@@ -32,7 +32,13 @@ composer require jalallinux/cayenne-lpp
 
 ### Encoder
 ```php
+$encoder = new Encoder();
+$encoder->addTemperature(0, 23.0)
+    ->addTemperature(1, 16.0)
+    ->addAccelerometer(4, 43.53);
 
+$buffer = $encoder->getBuffer();
+$size = $encoder->getSize();
 ```
 
 ### Decoder

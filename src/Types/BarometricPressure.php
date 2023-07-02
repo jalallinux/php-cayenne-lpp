@@ -7,7 +7,7 @@ const LPP_BAROMETRIC_PRESSURE_SIZE = 4;
 
 trait BarometricPressure
 {
-    public function addBarometricPressure(int $channel, float $value)
+    public function addBarometricPressure(int $channel, float $value): self
     {
         if ($value > 6553.5) {
             throw new Exception('Value is too big to be encoded in BarometricPressure (max = 6553.5)');
@@ -19,6 +19,8 @@ trait BarometricPressure
             ($value >> 8) & 0xFF,
             $value & 0xFF,
         ]);
+
+        return $this;
     }
 
     public function decodeBarometricPressure(string $bin): array

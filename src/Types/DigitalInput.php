@@ -7,11 +7,13 @@ const LPP_DIGITAL_INPUT_SIZE = 3;
 
 trait DigitalInput
 {
-    public function addDigitalInput(int $channel, bool $value)
+    public function addDigitalInput(int $channel, bool $value): self
     {
         $this->addData($channel, LPP_DIGITAL_INPUT, [
             (int) $value,
         ]);
+
+        return $this;
     }
 
     public function decodeDigitalInput(string $bin): array

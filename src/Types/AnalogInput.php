@@ -7,7 +7,7 @@ const LPP_ANALOG_INPUT_SIZE = 4;
 
 trait AnalogInput
 {
-    public function addAnalogInput(int $channel, float $value)
+    public function addAnalogInput(int $channel, float $value): self
     {
         if ($value > 655.35) {
             throw new Exception('Value is too big to be encoded in AnalogInput (max = 655.35)');
@@ -19,6 +19,8 @@ trait AnalogInput
             ($value >> 8) & 0xFF,
             $value & 0xFF,
         ]);
+
+        return $this;
     }
 
     public function decodeAnalogInput(string $bin): array
