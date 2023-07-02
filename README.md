@@ -33,17 +33,67 @@ composer require jalallinux/cayenne-lpp
 ### Encoder
 ```php
 $encoder = new Encoder();
-$encoder->addTemperature(0, 23.0)
-    ->addTemperature(1, 16.0)
-    ->addAccelerometer(4, 43.53);
+$encoder->addAnalogInput(2, 4.2)
+    ->addRelativeHumidity(3, 32.0)
+    ->addTemperature(4, 28.7)
+    ->addBarometricPressure(5, 851.3)
+    ->addAnalogOutput(6, 4.45);
 
-$buffer = $encoder->getBuffer();
-$size = $encoder->getSize();
+$hex = bin2hex($encoder->getBuffer());
+/**
+ * RESULT
+ * 020201a40368400467011f05732141060301bd
+ */
 ```
 
 ### Decoder
 ```php
-
+$decoder = new Decoder(hex2bin('020201a40368400467011f05732141060301bd'));
+$data = $decoder->data;
+/**
+ * RESULT
+ * [
+ *  0 => [
+ *    "channel" => 2
+ *    "type" => 2
+ *    "typeName" => "analogInput"
+ *    "data" => [
+ *      "value" => 4.2
+ *    ]
+ *  ]
+ *  1 => [
+ *    "channel" => 3
+ *    "type" => 104
+ *    "typeName" => "humidity"
+ *    "data" => [
+ *      "value" => 32.0
+ *    ]
+ *  ]
+ *  2 => [
+ *    "channel" => 4
+ *    "type" => 103
+ *    "typeName" => "temperature"
+ *    "data" => [
+ *      "value" => 28.7
+ *    ]
+ *  ]
+ *  3 => [
+ *    "channel" => 5
+ *    "type" => 115
+ *    "typeName" => "pressure"
+ *    "data" => [
+ *      "value" => 851.3
+ *    ]
+ *  ]
+ *  4 => [
+ *    "channel" => 6
+ *    "type" => 3
+ *    "typeName" => "analogOutput"
+ *    "data" => [
+ *      "value" => 4.45
+ *   ]
+ * ]
+ */
 ```
 
 
